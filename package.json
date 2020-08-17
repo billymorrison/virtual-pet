@@ -1,0 +1,14 @@
+{
+  "name": "virtual-pet",
+  "version": "1.0.0",
+  "description": "A program designed to keep a virtual pet alive",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Billy Morrison",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.4.0"
+  }
+}
