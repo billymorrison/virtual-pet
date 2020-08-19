@@ -24,9 +24,27 @@ describe('age functionality', () => {
     test('initial age is zero', () => {
         expect(testPet.age).toBe(0);
     })
+    test('initial hunger is zero', () => {
+        expect(testPet.hunger).toBe(0);
+    })
+    test('initial fitness is ten', () => {
+        expect(testPet.fitness).toBe(10);
+    })
+    
+})
+
+describe('age functionality', () => {
+    const testPet = new Pet('foobar')
+    testPet.growUp();
 
     test('check growUp has aged pet by 1', () => {
-        testPet.growUp();
         expect(testPet.age).toBe(1);
     })
+    test('growUp increases hunger by 5', () => {
+        expect(testPet.hunger).toBe(5);
+    })
+    test('growUp decreases hunger by 3', () => {
+        expect(testPet.fitness).toBe(7);
+    })
 })
+
