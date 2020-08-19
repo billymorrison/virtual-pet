@@ -11,4 +11,11 @@ Pet.prototype.growUp = function() {
     this.fitness -= 3;
 }
 
+Pet.prototype.walk = function() {
+    const maxFitness = 10;
+    
+    this.fitness += 4;
+    if(this.fitness > maxFitness) this.fitness = maxFitness;
+}
+
 module.exports = Pet;

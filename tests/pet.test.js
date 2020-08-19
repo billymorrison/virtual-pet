@@ -18,7 +18,7 @@ describe('test name functionality', () => {
     })
 })
 
-describe('age functionality', () => {
+describe('check initial values', () => {
     const testPet = new Pet('foobar')
 
     test('initial age is zero', () => {
@@ -33,7 +33,7 @@ describe('age functionality', () => {
     
 })
 
-describe('age functionality', () => {
+describe('growUp functionality', () => {
     const testPet = new Pet('foobar')
     testPet.growUp();
 
@@ -46,5 +46,19 @@ describe('age functionality', () => {
     test('growUp decreases hunger by 3', () => {
         expect(testPet.fitness).toBe(7);
     })
+})
+
+describe('walk functionality', () => {
+    const testPet = new Pet('foobar')
+
+    test('walk increases fitness by 4', () => {
+        testPet.fitness = 3;
+        testPet.walk();
+        expect(testPet.fitness).toBe(7);
+    })
+    test('10 is maximum number fitness can reach', () => {
+        testPet.walk();
+        expect(testPet.fitness).toBe(10);
+    })  
 })
 
