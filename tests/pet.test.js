@@ -62,3 +62,17 @@ describe('walk functionality', () => {
     })  
 })
 
+describe('feed functionality', () => {
+    const testPet = new Pet('foobar')
+
+    test('feed decreases hunger by 3', () => {
+        testPet.hunger = 5;
+        testPet.feed();
+        expect(testPet.hunger).toBe(2);
+    })
+    test('0 is the lowest number hunger can reach', () => {
+        testPet.feed();
+        expect(testPet.hunger).toBe(0);
+    })  
+})
+
