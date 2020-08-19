@@ -17,3 +17,16 @@ describe('test name functionality', () => {
         expect(new Pet('HjUMkKK2343').name).toBe('HjUMkKK2343');
     })
 })
+
+describe('age functionality', () => {
+    const testPet = new Pet('foobar')
+
+    test('initial age is zero', () => {
+        expect(testPet.age).toBe(0);
+    })
+
+    test('check growUp has aged pet by 1', () => {
+        testPet.growUp();
+        expect(testPet.age).toBe(1);
+    })
+})
