@@ -76,3 +76,30 @@ describe('feed functionality', () => {
     })  
 })
 
+describe('checkUp functionality', () => {
+    let testPet = new Pet('foobar')
+    beforeEach(() => testPet = new Pet('foobar'));
+
+    test('returns i am fine if all state is in correct levels', () => {
+        expect(testPet.checkUp()).toBe('I feel great!');
+    })
+    test('returns i am fine if all state is in correct levels', () => {
+        testPet.hunger = 3;
+        testPet.fitness = 7;
+        expect(testPet.checkUp()).toBe('I feel great!');
+    })
+    test('fitness <= 3 and hunger >= 5 asks for a walk and a snack', () => {
+        testPet.fitness = 2;
+        testPet.hunger = 7;
+        expect(testPet.checkUp()).toBe('I am hungry AND I need a walk');
+    })
+    test('fitness <= 3 asks for a walk', () => {
+        testPet.fitness = 2;
+        expect(testPet.checkUp()).toBe('I need a walk');
+    })
+    test('hunger >= 5 asks for a snack', () => {
+        testPet.hunger = 7;
+        expect(testPet.checkUp()).toBe('I am hungry');
+    })  
+})
+

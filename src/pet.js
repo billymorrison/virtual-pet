@@ -27,4 +27,19 @@ Pet.prototype.feed = function() {
     if(this.hunger < 0) this.hunger = minimumHunger;
 }
 
+Pet.prototype.checkUp = function() {
+    const upperHunger = 5;
+    const lowerFitness = 3;
+
+    if (this.hunger >= upperHunger && this.fitness <= lowerFitness) {
+        return 'I am hungry AND I need a walk';
+    } else if (this.hunger >= upperHunger) {
+        return 'I am hungry';
+    } else if (this.fitness <= lowerFitness) {
+        return 'I need a walk';
+    } else {
+        return 'I feel great!';
+    }
+};
+
 module.exports = Pet;
