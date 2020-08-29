@@ -6,6 +6,7 @@ describe('constructor', () => {
         expect(new Pet()).toBeInstanceOf(Object);
     })
 })
+
 describe('test name functionality', () => {
     test('passing pet with a name creates name property', () => {
         expect(new Pet('fido').name).toBe('fido');
@@ -101,5 +102,58 @@ describe('checkUp functionality', () => {
         testPet.hunger = 7;
         expect(testPet.checkUp()).toBe('I am hungry');
     })  
+})
+
+describe('isAlive functionality', () => {
+    let testPet = new Pet('foobar')
+    beforeEach(() => testPet = new Pet('foobar'));
+
+    test('returns true if all states are in acceptable levels', () => {
+        expect(testPet.isAlive).toBe(true);
+    })
+    test('returns false when hunger is over maximum', () => {
+        testPet.hunger = 11;
+        expect(testPet.isAlive).toBe(false);
+    })
+    test('returns false if fitness is under minimum', () => {
+        testPet.fitness = 0;
+        expect(testPet.isAlive).toBe(false);
+    })
+    test('returns false if age is over maximum', () => {
+        testPet.age = 35;
+        expect(testPet.isAlive).toBe(false);
+    })
+})
+
+describe('check error functionality', () => {
+    let testPet = new Pet('foobar')
+    testPet.hunger = 11;
+
+    test('throws an error if you try to feed a dead pet', () => {
+        expect(() => testPet.feed()).toThrow('Your pet is no longer alive :(');
+    })
+    test('throws an error if you try to walk a dead pet', () => {
+        expect(() => testPet.walk()).toThrow('Your pet is no longer alive :(');
+    })
+    test('throws an error if you try to age a dead pet', () => {
+        expect(() => testPet.growUp()).toThrow('Your pet is no longer alive :(');
+    })
+    test('checkUp returns a similar string if the pet is dead', () => {
+        expect(() => testPet.checkUp()).toThrow('Your pet is no longer alive :(');
+    })
+})
+
+describe('check we can make babies', () => {
+    const parent = new Pet('Dave');
+    const child = new Pet('Amelia');
+
+    parent.adoptChild(child);
+
+    test('check adding a child to a parent adds to the children array', () => {
+        expect(parent.children).toHaveLength(1);
+    })
+    test('check adding a child to a parent adds to the children array', () => {
+        expect(parent.children[0].name).toEqual('Amelia');
+    })
 })
 

@@ -3,15 +3,32 @@ function Pet(nameInput) {
     this.age = 0,
     this.hunger = 0,
     this.fitness = 10
+    this.children = [];
 };
 
+Pet.prototype = {
+    get isAlive() {
+        return this.age < 30 && this.hunger < 10 && this.fitness > 0;
+    }
+}
+
 Pet.prototype.growUp = function() {
+
+    if(!this.isAlive) {
+        throw new Error('Your pet is no longer alive :(');
+    }
+
     this.age++;
     this.hunger += 5;
     this.fitness -= 3;
 }
 
 Pet.prototype.walk = function() {
+
+    if(!this.isAlive) {
+        throw new Error('Your pet is no longer alive :(');
+    }
+
     const maxFitness = 10;
     const walkingFitnessIncrease = 4;
 
@@ -20,6 +37,11 @@ Pet.prototype.walk = function() {
 }
 
 Pet.prototype.feed = function() {
+
+    if(!this.isAlive) {
+        throw new Error('Your pet is no longer alive :(');
+    }
+
     const minimumHunger = 0;
     const feedHungerDecrease = 3;
 
@@ -28,6 +50,11 @@ Pet.prototype.feed = function() {
 }
 
 Pet.prototype.checkUp = function() {
+
+    if(!this.isAlive) {
+        throw new Error('Your pet is no longer alive :(');
+    }
+
     const upperHunger = 5;
     const lowerFitness = 3;
 
@@ -41,5 +68,9 @@ Pet.prototype.checkUp = function() {
         return 'I feel great!';
     }
 };
+
+Pet.prototype.adoptChild = function(pet) {
+    this.children.push(pet);
+}
 
 module.exports = Pet;
