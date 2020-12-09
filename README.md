@@ -1,6 +1,6 @@
 # Virtual Pet
 
-This project will be used to create and care for a virtual pet
+This project will be used to create and care for a virtual pet. The aim of this project is to get an understanding of objext oriented programming.
 
 * You can give them a name
 
@@ -28,8 +28,47 @@ npm install jest -D
 
 ## Usage
 
-```javascript
-// There is no functionality at present
+Create your new pet by calling the constructor with your desired name.
+
+```js
+const newPet = new Pet('alan')
+```
+
+Your pet will have some initial values that determine it's wellbeing.
+
+```js
+constructor(name) {
+        this.name = name,
+        this.hunger = 0,
+        this.age = 0,
+        this.fitness = 10,
+        this.children = []
+    }
+```
+
+You can check your pet's wellbeing using the checkup method.
+
+```js
+newPet.checkUp()
+```
+
+And depending on the output of the checkup you can perform various activities with your pet.
+
+```js
+newPet.walk()
+newPet.feed()
+```
+
+Your pet can also adopt a child!
+
+```js
+newPet.adoptChild(new Pet('Bob'))
+```
+
+Sadly all good things must come to an end and you can check whether your pet is alive.
+
+```js
+newPet.isAlive()
 ```
 
 ## Contributing
